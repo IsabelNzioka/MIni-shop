@@ -35,7 +35,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
       items: [
         {
           xtype: "image",
-          src: recordData.image,
+          src: recordData.imageUrl,
           flex: 1,
           width: "100%",
           padding: "0 0 10 0",

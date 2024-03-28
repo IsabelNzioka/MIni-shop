@@ -13,7 +13,7 @@ Ext.define("Mini.app.store.Products", {
       name: "Product 1",
       productCode: "ABC123",
       price: 10.99,
-      image:
+      imageUrl:
         "https://images.unsplash.com/photo-1531092601737-e5b3b6e57365?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHRlY2glMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D",
     },
     {
@@ -21,7 +21,7 @@ Ext.define("Mini.app.store.Products", {
       name: "Product 2",
       productCode: "DEF456",
       price: 19.99,
-      image:
+      imageUrl:
         "https://plus.unsplash.com/premium_photo-1664194583917-b0ba07c4ce2a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
@@ -29,7 +29,7 @@ Ext.define("Mini.app.store.Products", {
       name: "Product 3",
       productCode: "GHI789",
       price: 25.49,
-      image:
+      imageUrl:
         "https://images.unsplash.com/photo-1531092601737-e5b3b6e57365?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHRlY2glMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D",
     },
 
@@ -38,7 +38,7 @@ Ext.define("Mini.app.store.Products", {
       name: "Product 1",
       productCode: "ABC123",
       price: 10.99,
-      image:
+      imageUrl:
         "https://images.unsplash.com/photo-1531092601737-e5b3b6e57365?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHRlY2glMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D",
     },
     {
@@ -46,7 +46,7 @@ Ext.define("Mini.app.store.Products", {
       name: "Product 2",
       productCode: "DEF456",
       price: 19.99,
-      image:
+      imageUrl:
         "https://plus.unsplash.com/premium_photo-1664194583917-b0ba07c4ce2a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
@@ -54,8 +54,9 @@ Ext.define("Mini.app.store.Products", {
       name: "Product 3",
       productCode: "GHI789",
       price: 25.49,
-      image:
+      imageUrl:
         "https://images.unsplash.com/photo-1531092601737-e5b3b6e57365?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHRlY2glMjBwcm9kdWN0c3xlbnwwfHwwfHx8MA%3D%3D",
     },
   ],
+  
 });
