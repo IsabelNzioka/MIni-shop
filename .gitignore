@@ -333,8 +333,6 @@ bootstrap.*
 classic.json*
 modern.json*
 .sencha
-/ext
-ext/
 sencha-error*
 /build
 bootstrap.*
