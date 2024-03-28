@@ -10,8 +10,8 @@ Ext.define('Mini.app.model.Category', {
        // url:  to be defined
         reader: {
             type: 'json',
-            rootProperty: 'rows',
-            totalProperty: 'totalCount'
+            rootProperty: 'data',
+            totalProperty: 'itemCount'
         }
     },
 });
