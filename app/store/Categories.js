@@ -1,6 +1,7 @@
 Ext.define('Mini.app.store.Categories', {
     extend: 'Ext.data.Store',
-    alias: 'store.categorystore',
+    alias: 'store.categories',
+    storeId: "categories",
     model: 'Mini.app.model.Category',
     requires: ['Mini.app.model.Category'],
     autoLoad:true,

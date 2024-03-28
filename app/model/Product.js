@@ -1,11 +1,12 @@
 Ext.define("Mini.app.model.Product", {
   extend: "Ext.data.Model",
+  idProperty: "id",
 
-  fields: ["id", "name", "price", "image", "description", "category"],
-  
+  fields: ["id", "name", "price", "imageUrl", "description", "categoryId"],
+
   proxy: {
     type: "rest",
-    // url:  to be defined
+    // url:"http://localhost:7000/api/v1/products/"
     reader: {
       type: "json",
       rootProperty: "data",
