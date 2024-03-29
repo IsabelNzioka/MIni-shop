@@ -7,7 +7,7 @@ Ext.define('Mini.app.store.MenuItems', {
         expanded: true,
         children: [{
             text: 'Products',
-            iconCls: 'x-fa fa-home',
+            iconCls: 'x-fa fa-store',
             className: 'products',
             leaf: true
         },{

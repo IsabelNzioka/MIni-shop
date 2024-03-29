@@ -1,7 +1,6 @@
 Ext.define('Mini.app.view.menu.MainMenu', {
     extend: 'Ext.panel.Panel',
     xtype: 'mainmenu',
-    cls: 'menu-background',
 
     requires: [
         'Mini.app.store.MenuItems'
@@ -31,31 +30,37 @@ Ext.define('Mini.app.view.menu.MainMenu', {
         useArrows: true,
         bind: '{navItems}',
         listeners: {
-            itemclick: 'onMainMenuItemClick'
+            selectionchange: 'onMainMenuItemClick'
         }
     }],
 
     tools: [{
         type: 'toggle',
         handler: 'onToggleMicro',
-        tooltip: 'Toggle Micro'
+        tooltip: 'Toggle Micro',
+        glyph: 'xf0c9@FontAwesome',
+
     }],
 
-    
+
 
     setMicro: function (microMode) {
-        var treelist = this.lookupReference('treelist');
-        if (microMode) {
-            this.setWidth(44);
-
-        } else {
-            this.setWidth(250);
-
-        }
-
-        // Update the tooltip text based on the microMode
+        var mainMenu = this;
         var toggleButton = this.tools[0]; // Assuming the toggle button is the first tool
-        toggleButton.setTooltip(microMode ? 'Expand Menu' : 'Collapse Menu');
+    
+        if (microMode) {
+            mainMenu.addCls('responsive-transition');
+            mainMenu.setWidth(44);
+            toggleButton.setGlyph('xf0a9@FontAwesome');
+            toggleButton.setTooltip('Expand Menu');
+        } else {
+            mainMenu.addCls('responsive-transition');
+            mainMenu.setWidth(250);
+            toggleButton.setGlyph('xf0c9@FontAwesome');
+            toggleButton.setTooltip('Collapse Menu');
+        }
     }
-
+    
+    
+    
 });

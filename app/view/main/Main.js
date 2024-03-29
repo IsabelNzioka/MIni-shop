@@ -6,20 +6,20 @@
  * TODO - Replace this content of this view to suite the needs of your application.
  */
 Ext.define("Mini.app.view.main.Main", {
-  extend: 'Ext.container.Container',
-  xtype: 'app-main',
+    extend: 'Ext.container.Container',
+    xtype: 'app-main',
 
 
-  requires: [
-    "Ext.plugin.Viewport",
-    "Ext.window.MessageBox",
+    requires: [
+        "Ext.plugin.Viewport",
+        "Ext.window.MessageBox",
 
-    "Mini.app.view.main.MainController",
-    "Mini.app.view.main.MainModel",
-    "Mini.app.view.main.List",
-  ],
+        "Mini.app.view.main.MainController",
+        "Mini.app.view.main.MainModel",
+        "Mini.app.view.main.List",
+    ],
 
-  plugins: 'viewport',
+    plugins: 'viewport',
     controller: 'main',
     viewModel: 'main',
 
@@ -36,8 +36,8 @@ Ext.define("Mini.app.view.main.Main", {
         region: 'west',
         width: 250,
         split: true,
+       
 
-        
     },
     {
         region: 'center',
