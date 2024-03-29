@@ -86,6 +86,16 @@ Ext.define("Mini.app.view.main.Mainbackup", {
       ],
     },
     {
+      title: "Orders",
+      iconCls: "fa-solid fa-truck-fast",
+      // The following grid shares a store with the classic version's grid as well!
+      items: [
+        {
+          xtype: "products",
+        },
+      ],
+    },
+    {
       title: "Users",
       iconCls: "fa-user",
       bind: {
