@@ -1,0 +1,30 @@
+[
+    {
+        "productImage": "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?q=80&w=1530&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "productCode": "NIK_01",
+        "productName":"Air force",
+        "productPrice": "$ 25.00",
+         "quantity": "3"
+    },
+    {
+        "productImage": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/4693a962-0ea1-4677-b5fd-eeed550ab4d3/air-jordan-1-low-mens-shoes-0LXhbn.png",
+        "productCode": "JOR_01",
+        "productName":"Nike J1",
+        "productPrice": "$ 20.00",
+         "quantity": "4"
+    },
+    {
+        "productImage": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/38d40c824ed84b12b641af17005a5dec_9366/Stan_Smith_Lux_Shoes_Black_HQ6787_HM1.jpg",
+        "productCode": "ADD_01",
+        "productName":"Adidas Stan Smith",
+        "productPrice": "$ 30.00",
+         "quantity": "10"
+    },
+    {
+        "productImage": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/745aee22-e411-4aa8-970d-4037b9a42fb3/air-max-dn-womens-shoes-dFBSQh.png",
+        "productCode": "MAX_01",
+        "productName":"Air Max",
+        "productPrice": "$ 18.00",
+         "quantity": "30"
+    }
+]
