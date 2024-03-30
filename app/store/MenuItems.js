@@ -15,14 +15,9 @@ Ext.define('Mini.app.store.MenuItems', {
         {
             text: "Orders",
             iconCls: "x-fa fa-store",
-            className: 'products',
+            className: 'orders',
             leaf: true
-            // The following grid shares a store with the classic version's grid as well!
-            // items: [
-            //   {
-            //     xtype: "products",
-            //   },
-            // ],
+          
           },
         {
             text: 'Users',
