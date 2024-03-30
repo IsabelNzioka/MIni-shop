@@ -5,12 +5,21 @@ Ext.define('Mini.app.store.MenuItems', {
     root: {
         text: 'Root',
         expanded: true,
-        children: [{
+        children: [
+            {
             text: 'Products',
             iconCls: 'x-fa fa-store',
             className: 'products',
             leaf: true
-        },{
+        },
+        {
+            text: "Orders",
+            iconCls: "x-fa fa-store",
+            className: 'orders',
+            leaf: true
+          
+          },
+        {
             text: 'Users',
             iconCls: 'x-fa fa-user',
             leaf: true
