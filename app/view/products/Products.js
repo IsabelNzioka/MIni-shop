@@ -11,17 +11,17 @@ Ext.define("Mini-shop.view.products.Products", {
     align: "stretch",
   },
 
-  bodyPadding: 10,
+  bodyPadding: 8,
 
   defaults: {
     frame: true,
-    bodyPadding: 10,
+    // bodyPadding: 10,
   },
 
   items: [
     {
       xtype: "productsgrid",
-      width: 1110,
+      width: 1100,
     },
     {
       xtype: "productdetails",
