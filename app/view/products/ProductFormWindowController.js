@@ -13,7 +13,7 @@ Ext.define("Mini-shop.view.products.ProductFormWindowController", {
       console.log("isValid >>>>>>>>>>>>>>>>>>>>> Clicked");
       form.submit({
         method: "POST",
-        url: "http://localhost:3000/products",   // TODO - CHange the url
+        url: "http://localhost:7000/api/products",   // TODO - CHange the url
         success: function (form, action) {
           Ext.Msg.alert("Success", action.result.msg);
         },

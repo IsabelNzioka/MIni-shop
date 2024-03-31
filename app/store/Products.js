@@ -7,6 +7,7 @@ Ext.define("Mini.app.store.Products", {
   autoLoad: true,
   sorters: ["id"],
   pageSize: 25,
+  
   data: [
     {
       id: 1,

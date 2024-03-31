@@ -15,7 +15,14 @@ Ext.define('Mini.app.store.MenuItems', {
         {
             text: "Orders",
             iconCls: "x-fa fa-store",
-            className: 'orders',
+            className: 'orders', 
+            leaf: true
+          
+          },
+          {
+            text: "Inventories",
+            iconCls: "x-fa fa-store",
+            className: 'inventoriesgrid', 
             leaf: true
           
           },

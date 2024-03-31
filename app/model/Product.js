@@ -13,4 +13,6 @@ Ext.define("Mini.app.model.Product", {
       totalProperty: "itemCount",
     },
   },
+
+  
 });

@@ -5,7 +5,7 @@ Ext.define("Mini-shop.view.products.ProductsGrid", {
   reference: "productsgrid",
 
   bodyPadding: 10,
-  width: 900,
+//   width: "100%\",
   //   border: true,
 
   scrollable: true,
