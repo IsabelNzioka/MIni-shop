@@ -22,10 +22,33 @@ Ext.define("Mini-shop.view.products.ProductsGrid", {
         type: "products",
         autoLoad: true,
       },
+      sortByOptions: {
+        fields: ['value', 'text'],
+        data: [
+          { value: "name", text: "Name" },
+          { value: "price", text: "Price" },
+          { value: "productCode", text: "Product Code" },
+        ],
+      },
     },
   },
+  
 
   tbar: [
+    {
+      xtype: "combobox",
+      fieldLabel: "Sort By",
+      labelWidth: 60,
+      emptyText: "Choose...",
+      bind: {
+        store: "{sortByOptions}",
+      },
+      displayField: "text",
+      valueField: "value",
+      listeners: {
+        change: "onSortByChange", 
+      },
+    },
     {
       text: "Add Products",
       listeners: {

@@ -7,13 +7,43 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
       view = me.getView(),
       productStore = me.getViewModel().getStore("products");
 
-    console.log("@Store>>>>>>>>>>." + productStore);
+      console.log("Number of records in productStore:", productStore.getCount());
 
-    productStore.each(function (record) {
-      var productCard = me.createProductCard(record.getData());
-      view.add(productCard);
-    });
+        console.log("@Store111111111111>>>>>>>>>>." + productStore.getData().items);
+
+        productStore.on('load', function(store, records, successful, operation) {
+          if (successful) {
+              store.each(function(record) {
+                  // console.log("Store Item:", record.getData());
+                  var productCard = me.createProductCard(record.getData());
+                  view.add(productCard);
+              });
+          } else {
+              console.error("Failed to load store data:", operation.getError());
+          }
+      });
+    
   },
+
+  onSortByChange: function (combobox, newValue, oldValue, eOpts) {
+    var me = this,
+    view = me.getView(),
+    productStore = me.getViewModel().getStore("products");
+    if (newValue) {
+        productStore.sort({
+            property: newValue,
+            direction: "ASC"
+        });
+
+        view.removeAll();
+
+         productStore.each(function(record) {
+            var productCard = me.createProductCard(record.getData());
+            view.add(productCard);
+        });
+    }
+},
+
 
   createProductCard: function (recordData) {
     var me = this;
@@ -35,7 +65,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
       items: [
         {
           xtype: "image",
-          src: recordData.imageUrl,
+          src: recordData.image,
           flex: 1,
           width: "100%",
           padding: "0 0 10 0",
@@ -93,7 +123,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
           items: [
             {
               xtype: "image",
-              src: productData.imageUrl ,
+              src: productData.image ,
               width: "100%",
               height: 300,
               padding: "0 0 10 0",
@@ -126,13 +156,13 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
     let productGrid = this.getView();
     let lowerPanel = Ext.ComponentQuery.query("productdetails")[0];
 
-    console.log("getView ---Meeeeeeeeeeeeee" + recordData.imageUrl);
+    console.log("getView ---Meeeeeeeeeeeeee" + recordData.image);
 
     if (productGrid.getWidth() === 1100) {
         productGrid.setWidth(300);
         lowerPanel.setWidth(790);
         
-        lowerPanel.down('image').setSrc(recordData.imageUrl); // Set image source
+        lowerPanel.down('image').setSrc(recordData.image); // Set image source
         
         let productInfoEl = lowerPanel.down('component[reference=productInfo]').getEl();
         productInfoEl.setHtml('<p><b>Product Code:</b> ' + recordData.productCode + '</p>' +
