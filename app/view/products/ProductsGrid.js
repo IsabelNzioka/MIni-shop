@@ -31,15 +31,7 @@ Ext.define("Mini-shop.view.products.ProductsGrid", {
       listeners: {
         click: "onAddProductsClicked",
       },
-    },
-    "->",
-    {
-      text: "Show Details",
-      handler: "onShowProductsDetails",
-      // bind: {
-      //   disabled: "{!productsgrid.selection}",
-      // },
-    },
+    }
   ],
 
   listeners: {

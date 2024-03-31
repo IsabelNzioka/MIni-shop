@@ -22,7 +22,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
       xtype: "panel",
       bodyPadding: 10,
       height: 300,
-      width: 250,
+      width: 240,
       //   border: true,
       margin: "0 20 30 0",
       style: {
@@ -50,7 +50,8 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
           text: "View Details",
           margin: "0 0 4 0",
           handler: function () {
-            me.showProductDetails(recordData);
+               me.onShowProductsDetails(this, true, recordData);
+          
           },
         },
         {
@@ -92,7 +93,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
           items: [
             {
               xtype: "image",
-              src: productData.image,
+              src: productData.imageUrl ,
               width: "100%",
               height: 300,
               padding: "0 0 10 0",
@@ -121,21 +122,32 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
   },
 
   //   ///////////////////////////////////// Display Details
-  onShowProductsDetails: function (btn, state) {
+  onShowProductsDetails: function (btn, state, recordData) {
     let productGrid = this.getView();
-
-    console.log("getView ---Meeeeeeeeeeeeee" + productGrid);
-
     let lowerPanel = Ext.ComponentQuery.query("productdetails")[0];
 
-    if (productGrid.getWidth() === 1110) {
-      productGrid.setWidth(300);
-      lowerPanel.setWidth(900);
-      btn.setText("Hide Details");
+    console.log("getView ---Meeeeeeeeeeeeee" + recordData.imageUrl);
+
+    if (productGrid.getWidth() === 1100) {
+        productGrid.setWidth(300);
+        lowerPanel.setWidth(790);
+        
+        lowerPanel.down('image').setSrc(recordData.imageUrl); // Set image source
+        
+        let productInfoEl = lowerPanel.down('component[reference=productInfo]').getEl();
+        productInfoEl.setHtml('<p><b>Product Code:</b> ' + recordData.productCode + '</p>' +
+                              // '<p><b>Price:</b> $' + recordData.price + '</p>' +
+                              "<p><b>Description:</b> The XYZ Mechanical Gaming Keyboard is designed for gamers who demand precision and durability. Featuring high-quality mechanical switches, customizable RGB lighting, and programmable macro keys, this keyboard offers a superior gaming experience. With its ergonomic design and anti-ghosting technology, you can enjoy hours of comfortable and responsive gaming sessions. Whether you're a casual gamer or a professional esports player, the XYZ Mechanical Gaming Keyboard delivers the performance and reliability you need to dominate the competition. </p>"  
+                              );
+
+                             
+        btn.setText("Hide Details");
+        btn.addCls('hideDetailsButton');
     } else {
-      productGrid.setWidth(1110);
-      lowerPanel.setWidth(0);
-      btn.setText("Show Details");
+        productGrid.setWidth(1100);
+        lowerPanel.setWidth(0);
+        btn.setText("Show Details");
+        btn.removeCls('hideDetailsButton');
     }
-  },
+}
 });
