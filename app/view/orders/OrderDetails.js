@@ -8,74 +8,55 @@ Ext.define("Mini-shop.view.orders.OrderDetails", {
   autoScroll: true,
   layout: "fit",
   modal: true,
+  record: "hello",
 
   items: [
     {
       xtype: "container",
       items: [
         {
+          layout: "hbox",
+          xtype: "container",
           items: [
             {
-              xtype: "container",
-              items: [
-                {
-                  layout: "hbox",
-                  xtype: "container",
-                  items: [
-                    {
-                      html: "<h2> My Orders </h2>",
-                      bodyPadding: 3,
-                      flex: 1,
-                    },
-                    {
-                      xtype: "splitter",
-                    },
-                    {
-                      html: "<h2> Order Summary </h2>",
-                      bodyPadding: 3,
-                      flex: 1,
-                    },
-                  ],
-                },
-                {
-                  layout: "hbox",
-                  xtype: "container",
-                  items: [
-                    {
-                      html: "<p> Nike j4 </p>",
-                      bodyPadding: 3,
-                      flex: 1,
-                    },
-                    {
-                      xtype: "splitter",
-                    },
-                    {
-                      html: "<h4> Subtotal: $ 225 </h4>",
-                      bodyPadding: 3,
-                      flex: 1,
-                    },
-                  ],
-                },
-                {
-                  layout: "hbox",
-                  xtype: "container",
-                  items: [
-                    {
-                      html: "<p> Nike Air force </p>",
-                      bodyPadding: 3,
-                      flex: 1,
-                    },
-                    {
-                      xtype: "splitter",
-                    },
-                    {
-                      html: "<h4> Taxes: $ 25 </h4>",
-                      bodyPadding: 3,
-                      flex: 1,
-                    },
-                  ],
-                },
+              html: "<h2> My Orders </h2>",
+              bodyPadding: 5,
+              flex: 1,
+            },
+            {
+              xtype: "splitter",
+            },
+            {
+              html: "<h2> Order Summary </h2>",
+              bodyPadding: 5,
+              flex: 1,
+            },
+          ],
+        },
+        {
+          layout: "hbox",
+          xtype: "container",
+          items: [
+            {
+              html: [
+                "<p> Nike j4  - 100; </p>",
+                " <p> Nike sb  - 100; </p>  ",
+                " <p> Nike air max  - 300; </p> ",
               ],
+              bodyPadding: 5,
+              flex: 1,
+            },
+            {
+              xtype: "splitter",
+            },
+            {
+              html: [
+                "<p> Subtotal  - 100; </p>",
+                " <p> Tax  - 100; </p>  ",
+                " <p> Total  - 500; </p> ",
+              ],
+              bodyPadding: 5,
+              flex: 1,
             },
           ],
         },
