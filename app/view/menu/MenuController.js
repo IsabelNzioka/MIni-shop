@@ -1,13 +1,14 @@
 Ext.define('Mini.app.view.menu.MenuController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.menucontroller',
-
+    xtype: "menucontroller",
     getMainPanel: function () {
         return Ext.ComponentQuery.query('mainpanel')[0];
     },
     
     onMainMenuItemClick: function (tree, rec, item) {
         let data = rec.data;
+     
 
         if (data) {
             let text = data.text;
@@ -23,6 +24,7 @@ Ext.define('Mini.app.view.menu.MenuController', {
                     iconCls: iconCls
                 });
             }
+            this.redirectTo(data.className);
             mainPanel.setActiveTab(activeTab);
         } else {
             console.error("Invalid data structure:", item);

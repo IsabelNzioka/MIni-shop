@@ -3,25 +3,45 @@
  * calls Ext.application(). This is the ideal place to handle application launch and
  * initialization details.
  */
-Ext.define('Mini.app.Application', {
-    extend: 'Ext.app.Application',
+Ext.define("Mini.app.Application", {
+  extend: "Ext.app.Application",
 
-    name: 'Mini.app',
+  name: "Mini.app",
 
-    quickTips: false,
-    platformConfig: {
-        desktop: {
-            quickTips: true
-        }
+  quickTips: false,
+  platformConfig: {
+    desktop: {
+      quickTips: true,
     },
+  },
 
-    onAppUpdate: function () {
-        Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
-            function (choice) {
-                if (choice === 'yes') {
-                    window.location.reload();
-                }
-            }
-        );
-    }
+  onAppUpdate: function () {
+    Ext.Msg.confirm(
+      "Application Update",
+      "This application has an update, reload?",
+      function (choice) {
+        if (choice === "yes") {
+          window.location.reload();
+        }
+      }
+    );
+  },
+
+  //! Routing
+  defaultToken: "products",
+
+  listen: {
+    global: {
+      unmatchedroute: "onUnmatchedRoute",
+    },
+  },
+
+  onUnmatchedRoute: function (token) {
+    Ext.Msg.show({
+      title: "Failure",
+      msg: "Unknown path: /" + token,
+      buttons: Ext.Msg.OK,
+      icon: Ext.Msg.ERROR,
+    });
+  },
 });
