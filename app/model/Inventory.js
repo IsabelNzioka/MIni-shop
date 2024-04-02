@@ -6,7 +6,7 @@ Ext.define("Mini.app.model.Inventory", {
   
     proxy: {
       type: "rest",
-      url:"http://localhost:6002/api/inventory",
+      url:"http://localhost:7000/api/inventory",
       reader: {
         type: "json",
         rootProperty: "data",
