@@ -3,6 +3,7 @@ Ext.define("Mini-shop.view.products.ProductDetails", {
   xtype: "productdetails",
   reference: "productdetails",
   height: 0,
+  
 
   items: [
     {
