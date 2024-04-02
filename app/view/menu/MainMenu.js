@@ -1,7 +1,7 @@
 Ext.define('Mini.app.view.menu.MainMenu', {
     extend: 'Ext.panel.Panel',
     xtype: 'mainmenu',
-
+    itemId:'mainmenu',
     requires: [
         'Mini.app.store.MenuItems'
     ],

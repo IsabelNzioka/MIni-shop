@@ -26,20 +26,7 @@ Ext.define('Mini.app.store.MenuItems', {
             leaf: true
           
           },
-        {
-            text: 'Users',
-            iconCls: 'x-fa fa-user',
-            leaf: true
-            
-        },{
-            text: 'Groups',
-            iconCls: 'x-fa fa-group',
-            leaf: true
-        },{
-            text: 'Settings',
-            iconCls: 'x-fa fa-wrench',
-            leaf: true
-        }]
-    }
+      
+   ] }
     
 })
