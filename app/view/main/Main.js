@@ -50,6 +50,6 @@ Ext.define("Mini.app.view.main.Main", {
     },
     {
         region: 'north',
-        // xtype: 'appheader',
+         xtype: 'appheader',
     }]
 });
