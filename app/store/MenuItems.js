@@ -32,6 +32,12 @@ Ext.define('Mini.app.store.MenuItems', {
             className: 'cart', 
              leaf: true
           },
+           {
+            text: "CHeckout",
+            iconCls: "fas fa-shopping-cart",
+            className: 'checkoutform', 
+             leaf: true
+          },
       
    ] }
     
