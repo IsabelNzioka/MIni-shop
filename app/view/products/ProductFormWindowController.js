@@ -4,25 +4,40 @@ Ext.define("Mini-shop.view.products.ProductFormWindowController", {
 
   init: function () {},
 
-  onProductSave: function () {
-    let window = this.getView();
-    let references = window.getReferences();
-    let form = references["productform"].getForm();
+ 
+  onProductSave: function (button) {
+    var form = button.up('window').down('form').getForm();
 
     if (form.isValid()) {
-      console.log("isValid >>>>>>>>>>>>>>>>>>>>> Clicked");
-      form.submit({
-        method: "POST",
-        url: "http://localhost:7000/api/products",   // TODO - CHange the url
-        success: function (form, action) {
-          Ext.Msg.alert("Success", action.result.msg);
+      var formData = form.getValues();
+      var productData = [{
+        name: formData.name,
+        price: formData.price,
+        productCode: formData.productCode,
+        image: formData.image,
+        categoryName: formData.category
+      }];
+
+      Ext.Ajax.request({
+        url: 'http://localhost:7000/api/v1/products/create-products',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        failure: function (form, action) {
-          Ext.Msg.alert("Failed", action.result.msg);
+        jsonData: productData,
+        success: function(response) {
+          console.log('Product saved successfully>>>>>', response);
+
+          var responseData = Ext.decode(response.responseText);
+          Ext.Msg.alert("Success", responseData.msg);
+
+          button.up('window').close(); //Close window
         },
+        failure: function(response) {
+          Ext.Msg.alert("Failed", "Failed to save inventory data");
+        }
       });
-    } else {
-      Ext.Msg.alert("Invalid Data", "Please correct form errors");
     }
-  },
+  }
+  
 });

@@ -34,6 +34,14 @@ Ext.define("Mini-shop.view.products.ProductFormWindow", {
           anchor: "90%",
         },
         {
+          reference: "productcode",
+          xtype: "textfield",
+          fieldLabel: "Product Code",
+          name: "productCode",
+          emptyText: "Product Code",
+          anchor: "90%",
+        },
+        {
           reference: "productprice",
           xtype: "numberfield",
           fieldLabel: "Price",
@@ -46,27 +54,24 @@ Ext.define("Mini-shop.view.products.ProductFormWindow", {
           reference: "productimage",
           xtype: "textfield",
           fieldLabel: "Image URL",
-          name: "imageUrl",
+          name: "image",
           emptyText: "Image URL",
           anchor: "90%",
         },
         {
-          reference: "productcategory",
-          xtype: "combobox",
-          fieldLabel: "Category",
-          name: "category",
-          emptyText: "Select Category",
-          store: ["Category 1", "Category 2", "Category 3"], // TODO - categories
-          anchor: "90%",
-        },
-        {
-          reference: "productdescription",
-          xtype: "textareafield",
-          fieldLabel: "Description",
-          name: "description",
-          emptyText: "Product Description",
-          anchor: "90%",
-        },
+          reference: 'productcategory',
+          xtype: 'combobox',
+          fieldLabel: 'Category',
+          name: 'category',
+          emptyText: 'Select Category',
+          store: {
+              type: 'categories' 
+          },
+          displayField: 'name',
+          valueField: 'name',
+          anchor: '90%'
+      }
+        
       ],
 
       buttons: [
