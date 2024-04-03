@@ -14,5 +14,5 @@ Ext.application({
     ],
 
     // The name of the initial view to create.
-    mainView: 'Mini.app.view.main.Main'
+   // mainView: 'Mini.app.view.main.Main'
 });
