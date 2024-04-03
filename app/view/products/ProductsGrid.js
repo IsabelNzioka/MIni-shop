@@ -1,6 +1,7 @@
 Ext.define("Mini-shop.view.products.ProductsGrid", {
   extend: "Ext.panel.Panel",
   xtype: "productsgrid",
+    requires: ['Mini.app.view.cart.Cart','Mini.app.view.cart.CartGrid' ], 
 
   reference: "productsgrid",
 

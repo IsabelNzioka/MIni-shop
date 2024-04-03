@@ -1,6 +1,9 @@
 Ext.define("Mini.app.view.cart.CartGridViewController", {
   extend: "Ext.app.ViewController",
   alias: "controller.cartgridviewcontroller",
+  requires: ['Mini.app.view.checkout.Checkout'], 
+
+
 
   addToCart: function (recordData) {
     var me = this,
@@ -64,63 +67,75 @@ Ext.define("Mini.app.view.cart.CartGridViewController", {
   },
 
   createOrderOnValidItemsInCheckout: function (orderData) {
-var cartPanel = Ext.ComponentQuery.query('cart')[0];
-console.log(cartPanel);
+    var cartPanel = Ext.ComponentQuery.query('cart')[0];
+    console.log(cartPanel);
+    var gridController = this;
 
-var myMask = new Ext.LoadMask({
-    msg: 'Placing Order... Please Wait...',
-    target: cartPanel
-});
+    var myMask = new Ext.LoadMask({
+      msg: 'Placing Order... Please Wait...',
+      target: cartPanel
+    });
 
 
     if (orderData) {
-        myMask.show();
-        Ext.Ajax.request({
-            url: 'http://localhost:7000/api/v1/orders/',
-            method: 'POST',
-            jsonData: orderData,
-            success: function (response) {
-                myMask.hide(); 
+      myMask.show();
+      Ext.Ajax.request({
+        url: 'http://localhost:7000/api/v1/orders/',
+        method: 'POST',
+        jsonData: orderData,
+        success: function (response) {
+          myMask.hide();
 
-                var responseData = Ext.decode(response.responseText);
+          var responseData = Ext.decode(response.responseText);
 
-                if (responseData.success) {
-                    Ext.toast({
-                        html: 'Order placed successfully',
-                        title: 'Success',
-                        align: 't',
-                        closable: true,
-                        slideInDuration: 400,
-                        minWidth: 400
-                    });
+          if (responseData.success) {
+            Ext.toast({
+              html: 'Order placed successfully',
+              title: 'Success',
+              align: 't',
+              closable: true,
+              slideInDuration: 400,
+              minWidth: 400
+            });
 
-                    var orderTime = responseData.data.orderTime;
-                    var orderNumber = responseData.data.orderNumber;
-                    var orderTotal = responseData.data.orderTotal;
-                    var paymentUrl = responseData.data.paymentUrl;
+            var orderTime = responseData.data.orderTime;
+            var orderNumber = responseData.data.orderNumber;
+            var orderTotal = responseData.data.orderTotal;
+            var paymentUrl = responseData.data.paymentUrl;
 
-                    console.log('Order placed successfully:');
-                    console.log('Order Time:', orderTime);
-                    console.log('Order Number:', orderNumber);
-                    console.log('Order Total:', orderTotal);
-                    console.log('Payment URL:', paymentUrl);
+            console.log('Order placed successfully:');
+            console.log('Order Time:', orderTime);
+            console.log('Order Number:', orderNumber);
+            console.log('Order Total:', orderTotal);
+            console.log('Payment URL:', paymentUrl);
+
+            // update the viewModel 
+
+            var checkoutPanel = Ext.ComponentQuery.query('checkout')[0];
+            var checkoutformViewModel = checkoutPanel.down('checkoutform').getViewModel();
+            checkoutformViewModel.set({
+                orderTime: orderTime,
+                orderId: orderNumber,
+                orderTotal: orderTotal,
+                paymentUrl: paymentUrl
+            });
+            gridController.redirectTo('checkout');
 
 
+            cartPanel.close();
 
-               cartPanel.close();
+          } else {
+            console.error('Failed to place order:', responseData.message);
+          }
+        },
+        failure: function (response) {
+          myMask.hide();
 
-                } else {
-                    console.error('Failed to place order:', responseData.message);
-                }
-            },
-            failure: function (response) {
-                myMask.hide(); 
-
-                console.error('Failed to place order:', response.responseText);
-            }
-        });
+          console.error('Failed to place order:', response.responseText);
+        }
+      });
     }
-}
+  }
 
 
 });

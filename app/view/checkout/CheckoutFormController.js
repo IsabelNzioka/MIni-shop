@@ -10,11 +10,26 @@ Ext.define('Mini.app.view.checkout.CheckoutFormController', {
         var form = this.getView().getForm();
 
         if (form.isValid()) {
-            Ext.Msg.alert('Success', 'Your order has been paid.');
-            form.reset();
-        } else {
-            Ext.Msg.alert('Error', 'Please fill in all required fields.');
-        }
+            // make ajax request
+            form.submit({
+              url: `http://localhost:7000/${paymentUrl}`,
+              method: "POST",
+              jsonSubmit: true, 
+              headers: {
+                "Content-Type": "application/json",
+              },
+      
+              success: function (form, action) {
+                Ext.Msg.alert("Success", );
+              },
+      
+              failure: function (form, action) {
+                Ext.Msg.alert("Failed", action.result.msg);
+              },
+            });
+          } else {
+            Ext, Msg.alert("Invalid Form Data. Please Correct!!");
+          }
     },
 
 
