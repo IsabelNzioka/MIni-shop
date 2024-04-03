@@ -1,13 +1,11 @@
-Ext.define("Mini-shop.view.login.LoginController", {
+Ext.define("Mini-shop.view.register.RegisterController", {
   extend: "Ext.app.ViewController",
-  alias: "controller.login",
+  alias: "controller.register",
 
-
-
-  onLoginClick: function () {
+  onRegisterClick: function () {
     let window = this.getView();
     let ref = window.getReferences();
-    let form = ref["loginform"].getForm();
+    let form = ref["registerform"].getForm();
     let me = this; // Capture reference to 'this'
 
     if (form.isValid()) {
@@ -15,13 +13,14 @@ Ext.define("Mini-shop.view.login.LoginController", {
 
       // Construct JSON data
       let jsonData = {
+        username: formValues.username,
         email: formValues.email,
         password: formValues.password,
       };
 
       //creating account -> register
       Ext.Ajax.request({
-        url: "http://localhost:3000/auth/login",
+        url: "http://localhost:3000/auth/register",
         method: "POST",
         jsonData: jsonData,
         success: function (response, opts) {
@@ -33,7 +32,7 @@ Ext.define("Mini-shop.view.login.LoginController", {
           localStorage.setItem("token", userToken);
           localStorage.setItem("userId", userId);
           localStorage.setItem("userEmail", userEmail);
-          Ext.Msg.alert("Successful", "Welcome.");
+          Ext.Msg.alert("Successful", "Proceed to login.");
 
           me.getView().destroy();
           // Add the main view to the viewport
@@ -66,7 +65,5 @@ Ext.define("Mini-shop.view.login.LoginController", {
     } else {
       Ext.Msg.alert("Invalid Data", "Please correct form errors.");
     }
-
-
   },
 });
