@@ -30,6 +30,14 @@ Ext.define("Mini-shop.view.products.ProductsGrid", {
           { value: "productCode", text: "Product Code" },
         ],
       },
+      filterByOptions: {
+        fields: ['value', 'text'],
+        data: [
+          { value: "All", text: "All" },
+          { value: "Keyboard", text: "Keyboard" },
+          { value: "Monitors", text: "Monitors" }
+        ],
+      },
     },
   },
   
@@ -49,6 +57,21 @@ Ext.define("Mini-shop.view.products.ProductsGrid", {
         change: "onSortByChange", 
       },
     },
+    {
+      xtype: "combobox",
+      fieldLabel: "Filter Categories",
+      labelWidth: 110,
+      emptyText: "Choose...",
+      bind: {
+        store: "{filterByOptions}",
+      },
+      displayField: "text",
+      valueField: "value",
+      listeners: {
+        change: "onFilterByChange", 
+      },
+    },
+
     {
       text: "Add Products",
       listeners: {

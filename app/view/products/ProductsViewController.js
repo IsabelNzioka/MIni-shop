@@ -45,6 +45,48 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
     }
 },
 
+// Get Products bY category name
+
+  onFilterByChange: function (combobox, newValue, oldValue, eOpts) {
+    var me = this,
+        view = me.getView(),
+        productStore = me.getViewModel().getStore("products");
+
+    // Check if newValue is "All"
+    if (newValue === "All") {
+        view.removeAll();
+        productStore.load();
+        productStore.each(function(record) {
+            var productCard = me.createProductCard(record.getData());
+            view.add(productCard);
+        });
+    } else {
+        Ext.Ajax.request({
+            url: 'http://localhost:7000/api/categories/category/' + newValue,
+            method: 'GET',
+            success: function (response) {
+                var responseData = Ext.decode(response.responseText);
+                view.removeAll();
+
+                productStore.removeAll();
+
+                productStore.add(responseData.data.products);
+                productStore.each(function(record) {
+                    var productCard = me.createProductCard(record.getData());
+                    view.add(productCard);
+                });
+            },
+            failure: function (response) {
+                console.error('Failed to load products for category:', response);
+            }
+        });
+    }
+},
+
+
+
+
+
 
   createProductCard: function (recordData) {
     var me = this;
