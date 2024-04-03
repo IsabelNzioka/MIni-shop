@@ -64,49 +64,63 @@ Ext.define("Mini.app.view.cart.CartGridViewController", {
   },
 
   createOrderOnValidItemsInCheckout: function (orderData) {
+var cartPanel = Ext.ComponentQuery.query('cart')[0];
+console.log(cartPanel);
+
+var myMask = new Ext.LoadMask({
+    msg: 'Placing Order... Please Wait...',
+    target: cartPanel
+});
+
+
     if (orderData) {
-      Ext.Ajax.request({
-        url: 'http://localhost:7000/api/v1/orders/',
-        method: 'POST',
-        jsonData: orderData,
-        success: function (response) {
-          var responseData = Ext.decode(response.responseText);
+        myMask.show();
+        Ext.Ajax.request({
+            url: 'http://localhost:7000/api/v1/orders/',
+            method: 'POST',
+            jsonData: orderData,
+            success: function (response) {
+                myMask.hide(); 
 
-          if (responseData.success) {
+                var responseData = Ext.decode(response.responseText);
 
-            Ext.toast({
-              html: 'Order placed successfully',
-              title: 'Success',
-              align: 't',
-              closable: true,
-              slideInDuration: 400,
-              minWidth: 400
-            });
+                if (responseData.success) {
+                    Ext.toast({
+                        html: 'Order placed successfully',
+                        title: 'Success',
+                        align: 't',
+                        closable: true,
+                        slideInDuration: 400,
+                        minWidth: 400
+                    });
 
-            var orderTime = responseData.data.orderTime;
-            var orderNumber = responseData.data.orderNumber;
-            var orderTotal = responseData.data.orderTotal;
-            var paymentUrl = responseData.data.paymentUrl;
+                    var orderTime = responseData.data.orderTime;
+                    var orderNumber = responseData.data.orderNumber;
+                    var orderTotal = responseData.data.orderTotal;
+                    var paymentUrl = responseData.data.paymentUrl;
 
-            console.log('Order placed successfully:');
-            console.log('Order Time:', orderTime);
-            console.log('Order Number:', orderNumber);
-            console.log('Order Total:', orderTotal);
-            console.log('Payment URL:', paymentUrl);
-            window.location.href = '/#orders';
+                    console.log('Order placed successfully:');
+                    console.log('Order Time:', orderTime);
+                    console.log('Order Number:', orderNumber);
+                    console.log('Order Total:', orderTotal);
+                    console.log('Payment URL:', paymentUrl);
 
-          } else {
-            // Handle the case where the order was not successfully placed
-            console.error('Failed to place order:', responseData.message);
-          }
-        },
 
-        failure: function (response) {
-          // Handle failure
-          console.error('Failed to place order:', response.responseText);
-        }
-      });
+
+               cartPanel.close();
+
+                } else {
+                    console.error('Failed to place order:', responseData.message);
+                }
+            },
+            failure: function (response) {
+                myMask.hide(); 
+
+                console.error('Failed to place order:', response.responseText);
+            }
+        });
     }
-  }
+}
+
 
 });
