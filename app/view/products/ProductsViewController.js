@@ -62,7 +62,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
         });
     } else {
         Ext.Ajax.request({
-            url: 'http://localhost:7000/api/categories/category/' + newValue,
+            url: 'http://localhost:7000/api/v1/categories/category/' + newValue,
             method: 'GET',
             success: function (response) {
                 var responseData = Ext.decode(response.responseText);
@@ -213,6 +213,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
   onShowProductsDetails: function (btn, state, recordData) {
     let productGrid = this.getView();
     let lowerPanel = Ext.ComponentQuery.query("productdetails")[0];
+
 
     console.log("getView ---Meeeeeeeeeeeeee" + recordData.image);
 
