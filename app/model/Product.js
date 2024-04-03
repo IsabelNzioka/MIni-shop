@@ -7,7 +7,7 @@ Ext.define("Mini.app.model.Product", {
 
   proxy: {
     type: "rest",
-    url:"http://localhost:7000/api/products",
+    url:"http://localhost:7000/api/v1/products/",
     reader: {
       type: "json",
       rootProperty: "data",

@@ -2,6 +2,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
   extend: "Ext.app.ViewController",
   alias: "controller.productsviewcontroller",
 
+
   onAfterRender: function () {
     var me = this,
       view = me.getView(),
@@ -128,11 +129,26 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
         },
         {
           xtype: "button",
-          text: "Add to Orders",
+          text: "Add to Cart",
           handler: function () {
             console.log("Order placed for product:", recordData.name);
+
+            var allGrids = Ext.ComponentQuery.query('grid');
+            console.log(allGrids);
+            allGrids.forEach(function(grid) {
+              console.log(grid.getController());
+              if (grid.xtype === 'cartgrid') {
+                var controller = grid.getController();
+                if (controller && controller.addToCart) {
+                  console.log("::::::::::Sent record data to cart "+ recordData.productCode);
+                  controller.addToCart(recordData);
+                }
+              }
+            });
+
+
             Ext.toast({
-              title: "Order placed successfully!",
+              title: "Added to cart successfully!",
               align: "t",
               closable: true,
               slideInDuration: 400,
@@ -222,5 +238,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
         btn.setText("Show Details");
         btn.removeCls('hideDetailsButton');
     }
-}
+},
+
+
 });
