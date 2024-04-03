@@ -7,6 +7,13 @@ Ext.define("Mini.app.view.main.MainController", {
 
   alias: "controller.main",
 
+  onUserEmailRender: function(displayField) {
+    var userEmail = localStorage.getItem('userEmail'); // Retrieve user email from local storage
+    if (userEmail) {
+      displayField.setValue(userEmail); // Set the user email value to the display field
+    }
+  },
+
   onLogout: function () {
     // Remove the localStorage key/value
     localStorage.removeItem("miniShopLogin");

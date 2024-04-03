@@ -3,7 +3,18 @@ Ext.define("Mini-shop.view.header.Header", {
   xtype: "appheader",
   ui: "footer",
   items: [
-    '->',
+    "->",
+    {
+      xtype: "displayfield",
+      itemId: "userEmailDisplay",
+      reference: "userEmailDisplay",
+      style: {
+        fontWeight: "bold",
+      },
+      listeners: {
+        render: "onUserEmailRender",
+      },
+    },
     {
       xtype: "button",
       itemId: "logout",
