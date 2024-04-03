@@ -70,7 +70,7 @@ Ext.define("Mini-shop.view.register.Register", {
           handler: "onRegisterClick",
           height: 30,
           width: 280,
-          margin: "30 0 0 0",
+          margin: "20 0 ",
           style: {
             "text-align": "center",
             "letter-spacing": "1.25px",
@@ -79,7 +79,7 @@ Ext.define("Mini-shop.view.register.Register", {
         },
         {
           xtype: "component",
-          margin: "40  0",
+          margin: "20  0",
           width: 280,
           style: {
             "font-size": "16px",
@@ -88,9 +88,24 @@ Ext.define("Mini-shop.view.register.Register", {
             "letter-spacing": "1.25px",
           },
           html:
-            "Already have an account?" +
-            "<a style='font-weight:bold;color:var(--base-foreground-color);text-decoration: none;' href='#register'> Login</a>",
+            "Already have an account?" 
         },
+        {
+          xtype: "button",
+          text: "LOGIN",
+          autoSize: true,        
+          height: 30,
+          width: 280,
+          margin: "20 0 0 0",
+          style: {
+            "text-align": "center",
+            "letter-spacing": "1.25px",
+            "font-size": "14px",
+          },
+          listeners: {              
+            click: 'onLoginClick'
+          }
+        }
       ],
     },
   ],

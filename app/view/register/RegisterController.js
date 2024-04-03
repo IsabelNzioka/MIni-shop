@@ -1,6 +1,12 @@
 Ext.define("Mini-shop.view.register.RegisterController", {
   extend: "Ext.app.ViewController",
   alias: "controller.register",
+  onLoginClick: function () {
+    let me = this;
+    var loginWindow = Ext.create("Mini-shop.view.login.Login");
+    me.getView().destroy();
+    loginWindow.show();
+  },
 
   onRegisterClick: function () {
     let window = this.getView();
@@ -24,38 +30,28 @@ Ext.define("Mini-shop.view.register.RegisterController", {
         method: "POST",
         jsonData: jsonData,
         success: function (response, opts) {
-          var obj = Ext.decode(response.responseText);
-          let userToken = obj.token;
-          let userEmail = obj.email;
-          let userId = obj._id;
-          localStorage.setItem("miniShopLogin", true);
-          localStorage.setItem("token", userToken);
-          localStorage.setItem("userId", userId);
-          localStorage.setItem("userEmail", userEmail);
-          Ext.Msg.alert("Successful", "Proceed to login.");
+          Ext.Msg.alert("Successful", "Successful, Proceed to login ");
+          setTimeout(function () {
+            var loginWindow = Ext.create("Mini-shop.view.login.Login");
+            loginWindow.show();
+          }, 1300);
 
           me.getView().destroy();
-          // Add the main view to the viewport
-          Ext.create({
-            xtype: "app-main",
-          });
         },
 
         failure: function (response, opts) {
           let errorMessage;
           switch (response.status) {
             case 400:
-            case 404:
-              errorMessage = "Incorrect email or password.";
+              errorMessage = "Bad Request: " + response.responseText;
               break;
             default:
-              errorMessage =
-                "Server-side failure with status code " + response.status;
+              errorMessage = "Server-side failure";
               break;
           }
 
           Ext.Msg.show({
-            title: "Login Failed",
+            title: "Registration Failed",
             msg: errorMessage,
             buttons: Ext.Msg.OK,
             icon: Ext.Msg.ERROR,

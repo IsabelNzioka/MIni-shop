@@ -2,7 +2,12 @@ Ext.define("Mini-shop.view.login.LoginController", {
   extend: "Ext.app.ViewController",
   alias: "controller.login",
 
-
+  onRegister: function () {
+       let me = this; 
+    var registerWindow = Ext.create("Mini-shop.view.register.Register");
+    me.getView().destroy();
+    registerWindow.show();
+  },
 
   onLoginClick: function () {
     let window = this.getView();
@@ -66,7 +71,5 @@ Ext.define("Mini-shop.view.login.LoginController", {
     } else {
       Ext.Msg.alert("Invalid Data", "Please correct form errors.");
     }
-
-
   },
 });
