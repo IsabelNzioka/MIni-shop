@@ -47,6 +47,7 @@ Ext.define("Mini-shop.view.login.Login", {
           xtype: "textfield",
           name: "email",
           fieldLabel: "Email",
+        //  vtype: 'customEmail',
           allowBlank: false,
         },
         {
@@ -54,11 +55,13 @@ Ext.define("Mini-shop.view.login.Login", {
           name: "password",
           inputType: "password",
           fieldLabel: "Password",
+          //vtype: 'customPass',
           allowBlank: false,
         },
         {
           xtype: "button",
           text: "LOG IN",
+          
           autoSize: true,
           handler: "onLoginClick",
           height: 30,
@@ -86,7 +89,7 @@ Ext.define("Mini-shop.view.login.Login", {
           xtype: "button",
           text: "REGISTER",
           autoSize: true,
-          //handler: "onLoginClick",
+         
           height: 30,
           width: 280,
           margin: "20 0 0 0",
