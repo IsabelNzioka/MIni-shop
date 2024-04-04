@@ -1,6 +1,8 @@
 Ext.define("Mini-shop.view.products.ProductsViewController", {
   extend: "Ext.app.ViewController",
   alias: "controller.productsviewcontroller",
+  
+    requires: ['Mini.app.view.cart.Cart','Mini.app.view.cart.CartGrid' ], 
 
 
   onAfterRender: function () {
@@ -133,6 +135,7 @@ Ext.define("Mini-shop.view.products.ProductsViewController", {
           handler: function () {
             console.log("Order placed for product:", recordData.name);
 
+ 
             var allGrids = Ext.ComponentQuery.query('grid');
             console.log(allGrids);
             allGrids.forEach(function(grid) {

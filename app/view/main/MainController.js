@@ -11,7 +11,7 @@ Ext.define("Mini.app.view.main.MainController", {
 
   routes: {
     products: "onProductRoute",
-    "orders|inventoriesgrid|cart|requests|logs": {
+    "orders|inventoriesgrid|cart|requests|logs|checkout": {
       action: "onRoute",
       before: "onBeforeRoute",
     },
