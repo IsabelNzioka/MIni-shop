@@ -1,8 +1,10 @@
 Ext.define("Mini-shop.view.inventories.InventoriesGrid", {
     extend: "Ext.grid.Panel",
+
     xtype: "inventoriesgrid",
     reference: "inventoriesgrid",
     controller: "inventorycontroller",
+    
     store: {
         type: 'inventories'
     },
@@ -11,6 +13,13 @@ Ext.define("Mini-shop.view.inventories.InventoriesGrid", {
         text: 'Add Inventories',
         listeners: {
             click: 'onAddInventoriesClicked'
+        }
+    }, '->', {
+        xtype: 'button',
+        text: 'Delete',
+        disabled: true, 
+        listeners: {
+            click: 'onDeleteButtonClick' 
         }
     }],
 
@@ -21,6 +30,8 @@ Ext.define("Mini-shop.view.inventories.InventoriesGrid", {
     },
 
     columns: [
+        // { xtype: 'checkcolumn', dataIndex: 'selected', text: '', width: 30, editor: { xtype: 'checkbox' } }, // Checkbox column for selectio
+        
         { dataIndex: 'id', text: 'ID' },
         { dataIndex: 'productCode', text: 'Product Code', flex: 1 },
         { 
@@ -44,7 +55,8 @@ Ext.define("Mini-shop.view.inventories.InventoriesGrid", {
     ],
 
     selModel: {
-        mode: 'SINGLE'
+        selType: 'checkboxmodel', 
+        checkOnly: true // Only use checkboxes for selection, not clicking the row
     },
     bbar: {
         xtype: 'pagingtoolbar',
@@ -53,6 +65,10 @@ Ext.define("Mini-shop.view.inventories.InventoriesGrid", {
     scrollable: true,
 
     listeners: {
-        edit: 'onEdit' 
+        edit: 'onEdit',
+        selectionchange: function(selModel, selectedRecords) {
+            var deleteButton = this.down('button[text=Delete]');
+            deleteButton.setDisabled(selectedRecords.length === 0);
+        }
     }
 });
