@@ -13,7 +13,7 @@ Ext.define("Mini-shop.view.inventories.InventoryController", {
       },
 
 
-      onEdit: function (editor, context) {
+    onEdit: function (editor, context) {
         var record = context.record;
         var fieldName = context.field;
         var newValue = context.value;
@@ -41,5 +41,44 @@ Ext.define("Mini-shop.view.inventories.InventoryController", {
                 }
             });
         }
-    } 
+    },
+
+    // onDeleteButtonClick
+    // http://localhost:7000/api/v1/inventory/delete 
+    onDeleteButtonClick: function() {
+        var grid = this.getView();
+        var selectedRecords = grid.getSelectionModel().getSelection();
+
+        if (selectedRecords.length > 0) {
+            Ext.Msg.confirm('Confirm', 'Are you sure you want to delete the selected inventories?', function(btn) {
+                if (btn === 'yes') {
+                    var ids = [];
+                    Ext.each(selectedRecords, function(record) {
+                        ids.push(record.get('id'));
+                    });
+
+                    console.log("IDSSSSSSSSSSSS", ids)
+
+                    // Send request to delete selected inventories
+                    Ext.Ajax.request({
+                        url: 'http://localhost:7000/api/v1/inventory/delete ',
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        jsonData: ids, // Send the array of IDs directly
+                        success: function(response) {
+                            // Handle success
+                            Ext.toast('Selected inventories deleted successfully.');
+                            grid.getStore().load(); // Reload the store after deletion
+                        },
+                        failure: function(response) {
+                            // Handle failure
+                            Ext.toast('Failed to delete selected inventories.', 'Error');
+                        }
+                    });
+                }
+            });
+        }
+    }
 })
