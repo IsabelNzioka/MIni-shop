@@ -43,7 +43,7 @@ Ext.define("Mini-shop.view.inventories.InventoryController", {
         }
     },
 
-    // onDeleteButtonClick
+    // onDeleteButtonClick  ['', '']
     // http://localhost:7000/api/v1/inventory/delete 
     onDeleteButtonClick: function() {
         var grid = this.getView();
@@ -59,21 +59,21 @@ Ext.define("Mini-shop.view.inventories.InventoryController", {
 
                     console.log("IDSSSSSSSSSSSS", ids)
 
-                    // Send request to delete selected inventories
+                
                     Ext.Ajax.request({
                         url: 'http://localhost:7000/api/v1/inventory/delete ',
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        jsonData: ids, // Send the array of IDs directly
+                        jsonData: ids, 
                         success: function(response) {
-                            // Handle success
+                           
                             Ext.toast('Selected inventories deleted successfully.');
-                            grid.getStore().load(); // Reload the store after deletion
+                            grid.getStore().load(); 
                         },
                         failure: function(response) {
-                            // Handle failure
+                          
                             Ext.toast('Failed to delete selected inventories.', 'Error');
                         }
                     });
