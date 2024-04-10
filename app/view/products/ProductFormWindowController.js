@@ -15,7 +15,8 @@ Ext.define("Mini-shop.view.products.ProductFormWindowController", {
         price: formData.price,
         productCode: formData.productCode,
         image: formData.image,
-        categoryName: formData.category
+        categoryName: formData.category,
+        quantity: formData.quantity
       }];
 
       Ext.Ajax.request({

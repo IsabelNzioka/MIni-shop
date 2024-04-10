@@ -51,6 +51,15 @@ Ext.define("Mini-shop.view.products.ProductFormWindow", {
           editable: true,
         },
         {
+          reference: "productQuantity",
+          xtype: "numberfield",
+          fieldLabel: "Quantity",
+          name: "quantity",
+          emptyText: "Product Quantity",
+          anchor: "90%",
+          editable: true,
+        },
+        {
           reference: "productimage",
           xtype: "textfield",
           fieldLabel: "Image URL",
